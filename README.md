@@ -19,6 +19,15 @@ The easiest way to install this module is through the use of Composer:
 composer.phar require manuakasam/sam-versioning dev-master
 ```
 
+After that you should update your Database, this can either be done via doctrine
+
+```
+doctrine orm:validate-schema               // Everything OK? Next:
+doctrine orm:schema-tool:update --dump-sql // Only updating what you're expecting? Next:
+doctrine orm:schema-tool:update --force    // And we're good to go
+```
+or by using the ```/data/schema.sql```-file.
+
 Configuration
 =============
 
@@ -82,3 +91,12 @@ return array(
     )
 );
 ```
+
+Todo
+====
+
+- Learn how to Unit Test
+- Implement Unit Tests
+- Provide ViewHelpers to gain easy access to earlier versions
+- Provide a RollBack-Feature for earlier versions
+- Let me know about your Ideas!
