@@ -1,0 +1,18 @@
+<?php
+/**
+ * The versionify array contains a key => value pair of classname and eventname.
+ * You are required to add both Class- and Eventname for SamVersioning to automatically be able to hook into these
+ * events and properly version the entities.
+ *
+ * Each event fired is required(!) to have the param "object" added, where "object" needs to be the PHP Object / Entity
+ * that you want to have versioned.
+ */
+return array(
+    'sam_versioning' => array(
+        'versionify' => array(
+            'My\Namespaced\Service'    => 'eventname.additem.post',
+            'My\Namespaced\Service'    => 'eventname.edititem.post',
+            'Other\Namespaced\Service' => 'objecteditted',
+        )
+    )
+);

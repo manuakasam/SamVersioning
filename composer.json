@@ -1,0 +1,28 @@
+{
+    "name": "manuakasam/sam-versioning",
+    "description": "A Module that eases the implementation of a version control for your entities",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/manuakasam/SamVersioning",
+    "keywords": [
+        "zf2",
+        "version-control",
+        "vcs",
+        "versioning",
+        "tracking"
+    ],
+    "authors": [
+        {
+            "name": "Manuel Stosic",
+            "email": "manuakasam@gmail.com",
+            "homepage": "http://samminds.com/",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "doctrine/doctrine-orm-module": "0.8.*",
+        "zendframework/zendframework": "2.2.*"
+    }
+}
