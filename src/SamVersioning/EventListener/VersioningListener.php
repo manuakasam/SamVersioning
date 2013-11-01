@@ -58,6 +58,9 @@ class VersioningListener implements ListenerAggregateInterface
         }
     }
 
+    /**
+     * @param EventInterface $event
+     */
     public function logVersioning(EventInterface $event)
     {
         $this->versioningService->logVersionForObject(

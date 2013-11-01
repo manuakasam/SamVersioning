@@ -39,6 +39,7 @@ class VersioningService implements VersioningServiceInterface
 
     /**
      * @param $object
+     *
      * @return VersionedObjectInterface
      */
     public function logVersionForObject($object)
@@ -56,15 +57,12 @@ class VersioningService implements VersioningServiceInterface
         return $prototype;
     }
 
-    public function retrieveVersionsForObjectName($objectName)
-    {
-        return $this->objectManager->getRepository('SamVersioning\Entity\VersionedObject')->findBy(array(
-            'object_name' => $objectName
-        ), array(
-            'objectDate DESC'
-        ));
-    }
-
+    /**
+     * @param string  $objectName   ClassName to fetch versions for
+     * @param integer $objectId     ID of ClassName to fetch versions for
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
     public function retrieveVersionsForObjectNameAndId($objectName, $objectId)
     {
         return $this->objectManager->getRepository('SamVersioning\Entity\VersionedObject')->findBy(array(
