@@ -1,8 +1,24 @@
 SamVersioning
 =============
 
-A Module that eases the implementation of a version control for your entities. Just configure this module to listen
-to your "Entity-Save-Events" and you're done - nothing more needed.
+This Module provides Features to keep versions of your DB-Entries. Using different Terminology, whenever you insert or
+update a Row from your DB-Tables, a copy of this very Row is saved into a separate Table. That is, if you configure this
+Module to to so ;)
+
+Modules Workflow
+================
+
+The Workflow of this Module is very simple. Whenever an Event is triggered that you specify in this Modules config, the
+Entity will be serialized and copied into a dedicated db-table.
+
+```
+Example\Entity\Row1 - saved to DB
+  -> serialize Row1
+    -> insert to versioning table (ID: 1)
+Example\Entity\Row1 - editted by someone
+  -> serialize Row1
+    -> insert to versioning table (ID: 2 - no update!)
+```
 
 Requirements
 ============
@@ -27,6 +43,18 @@ doctrine orm:schema-tool:update --dump-sql // Only updating what you're expectin
 doctrine orm:schema-tool:update --force    // And we're good to go
 ```
 or by using the ```/data/schema.sql```-file.
+
+All that's left is to add this Module to the loaded Modules within your ```application.config.php``` in the usual way.
+
+```
+return array(
+    'modules' => array(
+        'Application',
+        'DoctrineModule',
+        'DoctrineORMModule',
+        'SamVersioning'         // Load order isn't realy important tho
+    ),
+```
 
 Configuration
 =============
@@ -65,7 +93,7 @@ class SomeService {
 ```
 
 Like this, SamVersioning can do nothing to keep track of the Version of ```$entity```, so let's modify the code to allow
-us to keep track of it:
+us to keep track of it. Be sure to attach the Entity to your event as parameter with the name ```object```
 
 ```
 namespace MyNS\Services;
@@ -74,6 +102,7 @@ class SomeService {
         $this->dbMapper->save($entity);
 
         $eventManager = new EventManager('MyNS\Services\SomeService');
+                                                          // notice this array and the object key
         $eventManager->trigger('save-entity.post', $this, array('object' => $entity));
     }
 }
@@ -99,4 +128,5 @@ Todo
 - Implement Unit Tests
 - Provide ViewHelpers to gain easy access to earlier versions
 - Provide a RollBack-Feature for earlier versions
+- Provide the same features for Zend\Db, too
 - Let me know about your Ideas!
