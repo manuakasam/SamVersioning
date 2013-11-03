@@ -79,10 +79,10 @@ class VersionedObject implements VersionedObjectInterface
     }
 
     /**
-     * @param mixed $objectDate
+     * @param \DateTime $objectDate
      * @return VersionedObject
      */
-    public function setObjectDate($objectDate)
+    public function setObjectDate(\DateTime $objectDate)
     {
         $this->objectDate = $objectDate;
 
@@ -90,7 +90,7 @@ class VersionedObject implements VersionedObjectInterface
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getObjectDate()
     {

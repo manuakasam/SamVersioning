@@ -32,33 +32,33 @@ interface VersionedObjectInterface
     public function setObjectSerialized($objectSerialized);
 
     /**
-     * @param $objectDate
+     * @param \DateTime $objectDate
      * @return VersionedObjectInterface
      */
-    public function setObjectDate($objectDate);
+    public function setObjectDate(\DateTime $objectDate);
 
     /**
-     * @return VersionedObjectInterface
+     * @return integer
      */
     public function getId();
 
     /**
-     * @return VersionedObjectInterface
+     * @return integer
      */
     public function getObjectId();
 
     /**
-     * @return VersionedObjectInterface
+     * @return string
      */
     public function getObjectName();
 
     /**
-     * @return VersionedObjectInterface
+     * @return string
      */
     public function getObjectSerialized();
 
     /**
-     * @return VersionedObjectInterface
+     * @return \DateTime
      */
     public function getObjectDate();
 }
