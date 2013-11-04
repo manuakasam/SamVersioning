@@ -8,15 +8,14 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
     public function testConstructionFailsWithoutRequiredParameters()
     {
         $this->setExpectedException('PHPUnit_Framework_Error');
-
         $versioningService = new VersioningService();
     }
 
     public function testConstructionWorksWithRequiredParameters()
     {
-        $objectManager = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
-        $voPrototype   = $this->getMock('\SamVersioning\Entity\VersionedObject');
-        $events        = array();
+        $events            = array();
+        $objectManager     = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
+        $voPrototype       = $this->getMock('\SamVersioning\Entity\VersionedObject');
 
         $versioningService = new VersioningService(
             $objectManager,
@@ -29,10 +28,10 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testObjectPrototypeCanBeOverwrittenAndRetrieved()
     {
-        $objectManager = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
-        $voPrototype   = $this->getMock('\SamVersioning\Entity\VersionedObject');
-        $voPrototype2  = $this->getMock('\SamVersioning\Entity\VersionedObjectTwo');
-        $events        = array();
+        $events            = array();
+        $objectManager     = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
+        $voPrototype       = $this->getMock('\SamVersioning\Entity\VersionedObject');
+        $voPrototype2      = $this->getMock('\SamVersioning\Entity\VersionedObjectTwo');
 
         $versioningService = new VersioningService(
             $objectManager,
@@ -47,10 +46,10 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testEventsToVerifyCanBeOverwrittenAndRetrieved()
     {
-        $objectManager = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
-        $voPrototype   = $this->getMock('\SamVersioning\Entity\VersionedObject');
-        $events        = array();
-        $events2       = array('foo' => 'bar');
+        $events            = array();
+        $events2           = array('foo' => 'bar');
+        $objectManager     = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
+        $voPrototype       = $this->getMock('\SamVersioning\Entity\VersionedObject');
 
         $versioningService = new VersioningService(
             $objectManager,
@@ -65,17 +64,15 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testObjectsWillBeVersionifiedAndReturnsVersionedObjectPrototype()
     {
+        $events         = array();
         $testObjectMock = $this->getMock('\SamVersioning\Entity\VersionedObject');
-        $testObjectMock->expects($this->any())
-            ->method('setObjectId')
-            ->will($this->returnValue($testObjectMock));
-        $testObjectMock->expects($this->any())
-            ->method('getId')
-            ->will($this->returnValue('1'));
+        $objectManager  = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
+        $voPrototype    = $this->getMock('\SamVersioning\Entity\VersionedObject');
 
-        $objectManager = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
-        $voPrototype   = $this->getMock('\SamVersioning\Entity\VersionedObject');
-        $events        = array();
+        $voPrototype->expects($this->once())->method('setObjectId')->will($this->returnSelf());
+        $voPrototype->expects($this->once())->method('setObjectName')->will($this->returnSelf());
+        $voPrototype->expects($this->once())->method('setObjectSerialized')->will($this->returnSelf());
+        $voPrototype->expects($this->once())->method('setObjectDate')->will($this->returnSelf());
 
         $versioningService = new VersioningService(
             $objectManager,
