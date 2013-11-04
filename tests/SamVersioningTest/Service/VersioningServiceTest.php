@@ -84,4 +84,25 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('\SamVersioning\Entity\VersionedObjectInterface', $prototypeReturn);
     }
+
+    public function testRetrieveVersionsForObjectNameAndIdReturnsArrayCollection()
+    {
+        $events              = array();
+        $objectManager       = $this->getMock('\Doctrine\Common\Persistence\ObjectManager');
+        $arrayCollectionMock = $this->getMock('\Doctrine\Common\Collections\ArrayCollection');
+        $voPrototype         = $this->getMock('\SamVersioning\Entity\VersionedObject');
+
+        $objectManager->expects($this->once())->method('getRepository')->will($this->returnSelf());
+        $objectManager->expects($this->once())->method('findBy')->will($this->returnValue($arrayCollectionMock));
+
+        $versioningService = new VersioningService(
+            $objectManager,
+            $voPrototype,
+            $events
+        );
+
+        $arrayCollection = $versioningService->retrieveVersionsForObjectNameAndId('SomeObject', 1);
+
+        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $arrayCollection);
+    }
 }
