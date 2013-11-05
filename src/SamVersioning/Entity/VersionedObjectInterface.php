@@ -9,31 +9,31 @@ interface VersionedObjectInterface
 {
     /**
      * @param $id
-     * @return VersionedObjectInterface
+     * @return self
      */
     public function setId($id);
 
     /**
      * @param $objectId
-     * @return VersionedObjectInterface
+     * @return self
      */
     public function setObjectId($objectId);
 
     /**
      * @param $objectName
-     * @return VersionedObjectInterface
+     * @return self
      */
     public function setObjectName($objectName);
 
     /**
      * @param $objectSerialized
-     * @return VersionedObjectInterface
+     * @return self
      */
     public function setObjectSerialized($objectSerialized);
 
     /**
      * @param \DateTime $objectDate
-     * @return VersionedObjectInterface
+     * @return self
      */
     public function setObjectDate(\DateTime $objectDate);
 
