@@ -61,7 +61,7 @@ class VersionedObject implements VersionedObjectInterface
 
     /**
      * @param mixed $id
-     * @return VersionedObject
+     * @return self
      */
     public function setId($id)
     {
@@ -80,7 +80,7 @@ class VersionedObject implements VersionedObjectInterface
 
     /**
      * @param \DateTime $objectDate
-     * @return VersionedObject
+     * @return self
      */
     public function setObjectDate(\DateTime $objectDate)
     {
@@ -99,7 +99,7 @@ class VersionedObject implements VersionedObjectInterface
 
     /**
      * @param mixed $objectId
-     * @return VersionedObject
+     * @return self
      */
     public function setObjectId($objectId)
     {
@@ -118,7 +118,7 @@ class VersionedObject implements VersionedObjectInterface
 
     /**
      * @param mixed $objectName
-     * @return VersionedObject
+     * @return self
      */
     public function setObjectName($objectName)
     {
@@ -137,7 +137,7 @@ class VersionedObject implements VersionedObjectInterface
 
     /**
      * @param mixed $objectSerialized
-     * @return VersionedObject
+     * @return self
      */
     public function setObjectSerialized($objectSerialized)
     {
