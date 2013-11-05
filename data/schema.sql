@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS `sam_versioned_objects` (
   `object_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `search_idx` (`object_name`,`object_id`,`object_date`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
