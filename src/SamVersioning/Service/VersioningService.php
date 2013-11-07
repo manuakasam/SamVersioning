@@ -30,7 +30,11 @@ class VersioningService implements VersioningServiceInterface
      * @param VersionedObjectInterface $versionedObjectPrototype
      * @param array                    $eventsToVersionify
      */
-    public function __construct(ObjectManager $objectManager, VersionedObjectInterface $versionedObjectPrototype, $eventsToVersionify)
+    public function __construct(
+        ObjectManager $objectManager,
+        VersionedObjectInterface $versionedObjectPrototype,
+        $eventsToVersionify
+    )
     {
         $this->objectManager            = $objectManager;
         $this->versionedObjectPrototype = $versionedObjectPrototype;

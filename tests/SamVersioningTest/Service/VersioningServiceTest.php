@@ -103,12 +103,24 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
     {
         $events              = array();
         $objectManager       = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $objectRepository    = $this->getMock('Doctrine\Common\Persistence\ObjectRepository', array('getVersionsForObjectNameAndId', 'find', 'findAll', 'findBy', 'findOneBy', 'getClassName'));
+        $objectRepository    = $this->getMock('Doctrine\Common\Persistence\ObjectRepository', array(
+            'getVersionsForObjectNameAndId',
+            'find',
+            'findAll',
+            'findBy',
+            'findOneBy',
+            'getClassName'
+        ));
         $arrayCollectionMock = $this->getMock('Doctrine\Common\Collections\ArrayCollection');
         $voPrototype         = $this->getMock('SamVersioning\Entity\VersionedObject');
 
-        $objectManager->expects($this->once())->method('getRepository')->will($this->returnValue($objectRepository));
-        $objectRepository->expects($this->once())->method('getVersionsForObjectNameAndId')->will($this->returnValue($arrayCollectionMock));
+        $objectManager->expects($this->once())
+            ->method('getRepository')
+            ->will($this->returnValue($objectRepository));
+
+        $objectRepository->expects($this->once())
+            ->method('getVersionsForObjectNameAndId')
+            ->will($this->returnValue($arrayCollectionMock));
 
         $versioningService = new VersioningService(
             $objectManager,
