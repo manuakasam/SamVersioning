@@ -41,7 +41,8 @@ class Module implements
                 ),
                 'factories' => array(
                     'SamVersioning\Config'                           => 'SamVersioning\Options\ConfigFactory',
-                    'SamVersioning\EventListener\VersioningListener' => 'SamVersioning\EventListener\VersioningListenerFactory',
+                    'SamVersioning\EventListener\VersioningListener' =>
+                        'SamVersioning\EventListener\VersioningListenerFactory',
                     'SamVersioning\Service\VersioningService'        => 'SamVersioning\Service\VersioningServiceFactory'
                 )
             ),

@@ -34,8 +34,7 @@ class VersioningService implements VersioningServiceInterface
         ObjectManager $objectManager,
         VersionedObjectInterface $versionedObjectPrototype,
         $eventsToVersionify
-    )
-    {
+    ) {
         $this->objectManager            = $objectManager;
         $this->versionedObjectPrototype = $versionedObjectPrototype;
         $this->eventsToVersionify       = $eventsToVersionify;
