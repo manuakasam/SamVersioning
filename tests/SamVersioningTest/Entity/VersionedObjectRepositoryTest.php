@@ -1,12 +1,10 @@
 <?php
-namespace SamVersioningTest;
+namespace SamVersioningTest\Entity;
 
 use SamVersioning\Entity\VersionedObjectRepository;
 
 /**
- * Class VersionedObjectRepositoryTest
- * @package SamVersioningTest
- * @coversBaseClass \SamVersioning\Entity\VersionedObjectRepository
+ * @coversDefaultClass \SamVersioning\Entity\VersionedObjectRepository
  */
 class VersionedObjectRepositoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -48,6 +46,6 @@ class VersionedObjectRepositoryTest extends \PHPUnit_Framework_TestCase
         $testRepository          = new VersionedObjectRepository($entityManagerMock, $classMetadataMock);
         $shouldBeArrayCollection = $testRepository->getVersionsForObjectNameAndId('test', 1);
 
-        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $shouldBeArrayCollection);
+        $this->assertInstanceOf('Doctrine\Common\Collections\ArrayCollection', $shouldBeArrayCollection);
     }
 }

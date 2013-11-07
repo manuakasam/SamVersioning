@@ -1,5 +1,5 @@
 <?php
-namespace SamVersioningTest;
+namespace SamVersioningTest\Service;
 
 use SamVersioning\Service\VersioningService;
 
@@ -23,7 +23,7 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
             $events
         );
 
-        $this->assertInstanceOf('\SamVersioning\Service\VersioningServiceInterface', $versioningService);
+        $this->assertInstanceOf('SamVersioning\Service\VersioningServiceInterface', $versioningService);
     }
 
     /**
@@ -93,11 +93,11 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
 
         $prototypeReturn = $versioningService->logVersionForObject($testObjectMock);
 
-        $this->assertInstanceOf('\SamVersioning\Entity\VersionedObjectInterface', $prototypeReturn);
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $prototypeReturn);
     }
 
     /**
-     * @covers ::retrieveVersionsForObjectNameAndId()
+     * @covers ::getVersionsForObjectNameAndId()
      */
     public function testRetrieveVersionsForObjectNameAndIdReturnsArrayCollection()
     {
@@ -116,8 +116,8 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
             $events
         );
 
-        $arrayCollection = $versioningService->retrieveVersionsForObjectNameAndId('SomeObject', 1);
+        $arrayCollection = $versioningService->getVersionsForObjectNameAndId('SomeObject', 1);
 
-        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $arrayCollection);
+        $this->assertInstanceOf('Doctrine\Common\Collections\ArrayCollection', $arrayCollection);
     }
 }

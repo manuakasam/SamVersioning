@@ -1,10 +1,25 @@
 <?php
-namespace SamVersioningTest;
+namespace SamVersioningTest\Entity;
 
 use SamVersioning\Entity\VersionedObject;
 
+/**
+ * @coversDefaultClass \SamVersioning\Entity\VersionedObject
+ */
 class VersionedObjectTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @covers ::setId
+     * @covers ::setObjectid
+     * @covers ::setObjectName
+     * @covers ::setObjectSerialized
+     * @covers ::setObjectDate
+     * @covers ::getId
+     * @covers ::getObjectid
+     * @covers ::getObjectName
+     * @covers ::getObjectSerialized
+     * @covers ::getObjectDate
+     */
     public function testSettersAndGettersDefinedByInterface()
     {
         $checkData = array(
@@ -29,14 +44,21 @@ class VersionedObjectTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($versionedObject->getObjectDate(), $checkData['objectDate']);
     }
 
+    /**
+     * @covers ::setId
+     * @covers ::setObjectid
+     * @covers ::setObjectName
+     * @covers ::setObjectSerialized
+     * @covers ::setObjectDate
+     */
     public function testFluentInterfaceOfSetters()
     {
         $versionedObject = new VersionedObject();
 
-        $this->assertInstanceOf('\SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setId(1));
-        $this->assertInstanceOf('\SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectId(1));
-        $this->assertInstanceOf('\SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectName('test'));
-        $this->assertInstanceOf('\SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectSerialized('test'));
-        $this->assertInstanceOf('\SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectDate(new \DateTime('now')));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setId(1));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectId(1));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectName('test'));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectSerialized('test'));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectDate(new \DateTime('now')));
     }
 }

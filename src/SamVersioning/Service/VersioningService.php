@@ -61,7 +61,7 @@ class VersioningService implements VersioningServiceInterface
      * @param integer $objectId     ID of ClassName to fetch versions for
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
-    public function retrieveVersionsForObjectNameAndId($objectName, $objectId)
+    public function getVersionsForObjectNameAndId($objectName, $objectId)
     {
         return $this->objectManager
             ->getRepository('SamVersioning\Entity\VersionedObject')
