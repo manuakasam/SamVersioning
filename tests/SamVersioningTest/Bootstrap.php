@@ -1,5 +1,4 @@
 <?php
-
 namespace SamVersioningTest;
 
 use Zend\Loader\AutoloaderFactory;
@@ -76,7 +75,7 @@ class Bootstrap
         if (!$zf2Path) {
             throw new RuntimeException(
                 'Unable to load ZF2. Run `php composer.phar install` or'
-                    . ' define a ZF2_PATH environment variable.'
+                . ' define a ZF2_PATH environment variable.'
             );
         }
 
