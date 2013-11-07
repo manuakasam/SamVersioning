@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class VersionedObject
  *
  * @package SamVersioning\Entity
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="VersionedObjectRepository")
  * @ORM\Table(name="sam_versioned_objects", indexes={
  * @ORM\Index(name="search_idx", columns={
  *     "object_name", "object_id", "object_date"

@@ -30,7 +30,11 @@ class VersioningService implements VersioningServiceInterface
      * @param VersionedObjectInterface $versionedObjectPrototype
      * @param array                    $eventsToVersionify
      */
-    public function __construct(ObjectManager $objectManager, VersionedObjectInterface $versionedObjectPrototype, $eventsToVersionify)
+    public function __construct(
+        ObjectManager $objectManager,
+        VersionedObjectInterface $versionedObjectPrototype,
+        $eventsToVersionify
+    )
     {
         $this->objectManager            = $objectManager;
         $this->versionedObjectPrototype = $versionedObjectPrototype;
@@ -39,7 +43,6 @@ class VersioningService implements VersioningServiceInterface
 
     /**
      * @param $object
-     *
      * @return VersionedObjectInterface
      */
     public function logVersionForObject($object)
@@ -60,17 +63,13 @@ class VersioningService implements VersioningServiceInterface
     /**
      * @param string  $objectName   ClassName to fetch versions for
      * @param integer $objectId     ID of ClassName to fetch versions for
-     *
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
-    public function retrieveVersionsForObjectNameAndId($objectName, $objectId)
+    public function getVersionsForObjectNameAndId($objectName, $objectId)
     {
-        return $this->objectManager->getRepository('SamVersioning\Entity\VersionedObject')->findBy(array(
-            'objectName' => $objectName,
-            'objectId'   => $objectId
-        ), array(
-            'objectDate DESC'
-        ));
+        return $this->objectManager
+            ->getRepository('SamVersioning\Entity\VersionedObject')
+            ->getVersionsForObjectNameAndId($objectName, $objectId);
     }
 
     /**

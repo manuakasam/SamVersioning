@@ -1,5 +1,5 @@
 <?php
-namespace SamVersioningTest;
+namespace SamVersioningTest\Service;
 
 use SamVersioning\Service\VersioningService;
 
@@ -23,7 +23,7 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
             $events
         );
 
-        $this->assertInstanceOf('\SamVersioning\Service\VersioningServiceInterface', $versioningService);
+        $this->assertInstanceOf('SamVersioning\Service\VersioningServiceInterface', $versioningService);
     }
 
     /**
@@ -93,22 +93,34 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
 
         $prototypeReturn = $versioningService->logVersionForObject($testObjectMock);
 
-        $this->assertInstanceOf('\SamVersioning\Entity\VersionedObjectInterface', $prototypeReturn);
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $prototypeReturn);
     }
 
     /**
-     * @covers ::retrieveVersionsForObjectNameAndId()
+     * @covers ::getVersionsForObjectNameAndId()
      */
     public function testRetrieveVersionsForObjectNameAndIdReturnsArrayCollection()
     {
         $events              = array();
         $objectManager       = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $objectRepository    = $this->getMock('Doctrine\Common\Persistence\ObjectRepository');
+        $objectRepository    = $this->getMock('Doctrine\Common\Persistence\ObjectRepository', array(
+            'getVersionsForObjectNameAndId',
+            'find',
+            'findAll',
+            'findBy',
+            'findOneBy',
+            'getClassName'
+        ));
         $arrayCollectionMock = $this->getMock('Doctrine\Common\Collections\ArrayCollection');
         $voPrototype         = $this->getMock('SamVersioning\Entity\VersionedObject');
 
-        $objectManager->expects($this->once())->method('getRepository')->will($this->returnValue($objectRepository));
-        $objectRepository->expects($this->once())->method('findBy')->will($this->returnValue($arrayCollectionMock));
+        $objectManager->expects($this->once())
+            ->method('getRepository')
+            ->will($this->returnValue($objectRepository));
+
+        $objectRepository->expects($this->once())
+            ->method('getVersionsForObjectNameAndId')
+            ->will($this->returnValue($arrayCollectionMock));
 
         $versioningService = new VersioningService(
             $objectManager,
@@ -116,8 +128,8 @@ class VersioningServiceTest extends \PHPUnit_Framework_TestCase
             $events
         );
 
-        $arrayCollection = $versioningService->retrieveVersionsForObjectNameAndId('SomeObject', 1);
+        $arrayCollection = $versioningService->getVersionsForObjectNameAndId('SomeObject', 1);
 
-        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $arrayCollection);
+        $this->assertInstanceOf('Doctrine\Common\Collections\ArrayCollection', $arrayCollection);
     }
 }

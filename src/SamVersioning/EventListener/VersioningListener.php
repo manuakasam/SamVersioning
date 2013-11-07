@@ -21,7 +21,7 @@ class VersioningListener implements ListenerAggregateInterface
     /**
      * @param VersioningServiceInterface $versioningService
      */
-    function __construct(VersioningServiceInterface $versioningService)
+    public function __construct(VersioningServiceInterface $versioningService)
     {
         $this->versioningService = $versioningService;
     }
