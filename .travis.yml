@@ -9,7 +9,7 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit -c ./tests/phpunit.xml
-  - ./vendor/bin/phpcs --standard=PSR2 ./src/
+  - ./vendor/bin/phpcs --standard=PSR2 ./src/ ./tests/
 
 after_script:
   - php vendor/bin/coveralls -v
