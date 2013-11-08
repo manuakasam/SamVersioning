@@ -22,9 +22,9 @@ class Bootstrap
         if (($path = static::findParentPath('vendor'))) {
             $zf2ModulePaths[] = $path;
         }
-//        if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0]) {
-//            $zf2ModulePaths[] = $path;
-//        }
+        if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0] && $path !== false) {
+            $zf2ModulePaths[] = $path;
+        }
 
         static::initAutoloader();
 
