@@ -55,10 +55,15 @@ class VersionedObjectTest extends \PHPUnit_Framework_TestCase
     {
         $versionedObject = new VersionedObject();
 
-        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setId(1));
-        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectId(1));
-        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectName('test'));
-        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectSerialized('test'));
-        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface', $versionedObject->setObjectDate(new \DateTime('now')));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface',
+            $versionedObject->setId(1));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface',
+            $versionedObject->setObjectId(1));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface',
+            $versionedObject->setObjectName('test'));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface',
+            $versionedObject->setObjectSerialized('test'));
+        $this->assertInstanceOf('SamVersioning\Entity\VersionedObjectInterface',
+            $versionedObject->setObjectDate(new \DateTime('now')));
     }
 }
