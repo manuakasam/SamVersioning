@@ -5,6 +5,9 @@ This Module provides Features to keep versions of your DB-Entries. Using differe
 update a Row from your DB-Tables, a copy of this very Row is saved into a separate Table. That is, if you configure this
 Module to to so ;)
 
+[![Build Status](https://travis-ci.org/manuakasam/SamVersioning.png?branch=custom-entity-repository)](https://travis-ci.org/manuakasam/SamVersioning)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/manuakasam/SamVersioning/badges/quality-score.png?s=9a587ec84774561be74f546e2e122d13ec5b7538)](https://scrutinizer-ci.com/g/manuakasam/SamVersioning/)
+
 Modules Workflow
 ================
 
